@@ -26,12 +26,12 @@
                     <!-- Hero Content Start -->
                     <div class="hero-content">
                         <!-- Section Title Start -->
+                      
                         <div class="section-title">
-                            <h1 class="wow fadeInUp">Unlock your online potential and get a success</h1>
-                            <p class="wow fadeInUp" data-wow-delay="0.25s">We are a collective of visionary designers,
-                                storytellers, and strategists, passionate about bringing your brand to life From initial
-                                concept to final delivery, we are committed to driving your success.</p>
+                            <h1 class="wow fadeInUp">{{ text.title }}</h1>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">We are a team of digital innovators, creative thinkers, and growth strategists dedicated to crafting powerful online experiences. From sleek websites to impactful marketing and unforgettable branding, we turn ideas into measurable success. With every project, we blend creativity and strategy to elevate your brand and help it thrive in the digital world.</p>
                         </div>
+               
                         <!-- Section Title End -->
 
                         <!-- <div class="hero-content-body wow fadeInUp" data-wow-delay="0.5s">
@@ -71,13 +71,14 @@
                 <div class="col-lg-6">
                     <!-- Section Btn Start -->
                     <div class="section-btn wow fadeInUp" data-wow-delay="0.5s">
-                        <a href="service.html" class="btn-default">view all services</a>
+                        <a href="{% url 'web:services' %}" class="btn-default">view all services</a>
                     </div>
                     <!-- Section Btn End -->
                 </div>
             </div>
 
             <div class="row">
+                {% for service in services %}
                 <div class="col-lg-4 col-md-6">
                     <!-- Service Item Start -->
                     <div class="service-item page-service-item wow fadeInUp" data-wow-delay="0.6s"
@@ -87,13 +88,13 @@
                         </div>
 
                         <div class="service-category">
-                            <a href="#">IT Services</a>
+                            <a href="#">{{ service.title }}</a>
                         </div>
 
                         <div class="service-body">
                             <div class="service-content">
-                                <h3>development</h3>
-                                <p>We provide custom web development services tailored to business needs.</p>
+                                <h3>{{ service.catagory }}</h3>
+                                <p>{{ service.description }}</p>
                             </div>
                             <div class="service-btn">
                                 <a href="service-single.html" class="readmore-btn">read more</a>
@@ -102,50 +103,8 @@
                     </div>
                     <!-- Service Item End -->
                 </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <!-- Service Item Start -->
-                    <div class="service-item page-service-item wow fadeInUp" data-wow-delay="0.8s"
-                        style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
-                        <div class="icon-box">
-                            <img src="{% static 'images/icon-services-5.svg' %}" alt="">
-                        </div>
-
-                        <div class="service-category">
-                            <a href="#">E-commerce Solutions</a>
-                        </div>
-
-                        <div class="service-body">
-                            <div class="service-content">
-                                <h3>social marketing</h3>
-                                <p>Social Media Marketing services include strategy development.</p>
-                            </div>
-                            <div class="service-btn">
-                                <a href="service-single.html" class="readmore-btn">read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Service Item End -->
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <!-- Service Item Start -->
-                    <div class="service-item wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="icon-box">
-                            <img src="{% static 'images/icon-services-3.svg' %}" alt="">
-                        </div>
-                        <div class="service-body">
-                            <div class="service-content">
-                                <h3>SEO optimiz</h3>
-                                <p>SEO Optimization service focuses on improving your website's visibility.</p>
-                            </div>
-                            <div class="service-btn">
-                                <a href="service-single.html" class="readmore-btn">read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Service Item End -->
-                </div>
+                {% endfor %}
+               
             </div>
         </div>
     </div>

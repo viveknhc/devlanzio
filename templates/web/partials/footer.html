@@ -53,11 +53,11 @@
                             <!-- Footer Links start -->
                             <div class="footer-links">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="service.html">Services</a></li>
+                                    <li><a href="{% url 'web:index' %}">Home</a></li>
+                                    <li><a href="{% url 'web:about' %}">About Us</a></li>
+                                    <li><a href="{% url 'web:services' %}">Services</a></li>
                                     <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="{% url 'web:contact' %}">Contact Us</a></li>
                                 </ul>
                             </div>
                             <!-- Footer Links end -->
