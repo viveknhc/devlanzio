@@ -19,6 +19,7 @@ class Service(models.Model):
 
 
 class Works(models.Model):
+    catagory = models.CharField(max_length=100)
     image = VersatileImageField(upload_to = "works")
     title = models.CharField(max_length=100)
     client = models.CharField(max_length=100)
@@ -35,12 +36,6 @@ class Testimonial(models.Model):
     description = HTMLField()
     def __str__(self):
         return self.name
-    
-class Faqs(models.Model):
-    question = models.CharField(max_length=200)
-    answer = HTMLField()
-    def __str__(self):
-        return self.question
 
 class Blog(models.Model):
     title = models.CharField(max_length=200)
