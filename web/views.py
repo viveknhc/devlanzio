@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import HomeBanner, Service, Works, Testimonial, Blog, Journey
+from .models import HomeBanner, Service, Works, Testimonial, Blog, Journey,Contact
 from django.shortcuts import render,get_object_or_404
 
 def index(request):
@@ -36,6 +36,13 @@ def about(request):
     return render(request, "web/about.html", context)
 
 def contact(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        email = request.POST['email']
+        subject = request.POST['subject']
+        message = request.POST['message']
+        contact_save = Contact(name = name,email = email,subject = subject,message = message)
+        contact_save.save()
     context = {"is_contact": True}
     return render(request, "web/contact.html", context)
 

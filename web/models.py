@@ -51,3 +51,13 @@ class Journey(models.Model):
     image = VersatileImageField(upload_to = "journey")
     def __str__(self):
         return self.title
+    
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=200)
+    message = HTMLField()
+
+    def __str__(self):
+        return self.name
