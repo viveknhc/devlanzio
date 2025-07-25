@@ -5754,6 +5754,7 @@ header.main-header .header-sticky.active {
 .clients .img-box img{
    max-width: 130px;
     height: auto;
+	mix-blend-mode: luminosity;
 }
 
  
