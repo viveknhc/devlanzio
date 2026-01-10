@@ -2,39 +2,31 @@
 {% load static %}
 {% block content %}
 
+<div class="hero hero-image hero-video">
 
-    <!-- Hero Section Start -->
-    <div class="hero hero-image hero-video">
-        <!-- Video Start -->
-        <div class="hero-bg-video">
-            <!-- Selfhosted Video Start -->
-            <!-- <video autoplay muted loop id="myVideo"><source src="{% static 'images/hero-bg-video.mp4" type="video/mp4"></video> -->
-            <!-- <video autoplay muted loop id="myVideo"><source src="https://demo.awaikenthemes.com/assets/videos/diggy-video.mp4" type="video/mp4"></video> -->
-            <video autoplay muted loop id="myVideo">
-                <source src="{% static 'images/pattern1.mp4' %}" type="video/mp4">
-            </video>
-            <!-- Selfhosted Video End -->
+    <div class="hero-bg-video">
 
-            <!-- Youtube Video Start -->
-            <!-- <div id="herovideo" class="player" data-property="{videoURL:'74DWwSxsVSs',containment:'.hero-video', showControls:false, autoPlay:true, loop:true, vol:0, mute:false, startAt:0,  stopAt:296, opacity:1, addRaster:true, quality:'large', optimizeDisplay:true}"></div> -->
-            <!-- Youtube Video End -->
-        </div>
-        <!-- Video End -->
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Hero Content Start -->
-                    <div class="hero-content">
-                        <!-- Section Title Start -->
-                      
-                        <div class="section-title">
-                            <h1 class="wow fadeInUp">{{ text.title }}</h1>
-                            <p class="wow fadeInUp" data-wow-delay="0.25s">We are a team of digital innovators, creative thinkers, and growth strategists dedicated to crafting powerful online experiences. From sleek websites to impactful marketing and unforgettable branding, we turn ideas into measurable success. With every project, we blend creativity and strategy to elevate your brand and help it thrive in the digital world.</p>
-                        </div>
-               
-                        <!-- Section Title End -->
+        <video autoplay muted loop id="myVideo">
+            <source src="{% static 'images/pattern1.mp4' %}" type="video/mp4">
+        </video>
 
-                        <!-- <div class="hero-content-body wow fadeInUp" data-wow-delay="0.5s">
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Hero Content Start -->
+                <div class="hero-content">
+                    <!-- Section Title Start -->
+
+                    <div class="section-title">
+                        <h1 class="wow fadeInUp">{{ text.title }}</h1>
+                        <p class="wow fadeInUp" data-wow-delay="0.25s">We are a team of digital innovators, creative thinkers, and growth strategists dedicated to crafting powerful online experiences. From sleek websites to impactful marketing and unforgettable branding, we turn ideas into measurable success. With every project, we blend creativity and strategy to elevate your brand and help it thrive in the digital world.</p>
+                    </div>
+
+                    <!-- Section Title End -->
+
+                    <!-- <div class="hero-content-body wow fadeInUp" data-wow-delay="0.5s">
                             <div class="hero-agency-image">
                                 <img src="{% static 'images/hero-agency-image.svg' %}" alt="">
                             </div>
@@ -47,152 +39,144 @@
                                 </div>
                             </div>
                         </div> -->
-                    </div>
-                    <!-- Hero Content End -->
                 </div>
+                <!-- Hero Content End -->
             </div>
         </div>
     </div>
-    <!-- Hero Section End -->
+</div>
+<!-- Hero Section End -->
 
-    <!-- Our Services Section Start -->
-    <div class="our-services">
-        <div class="container">
-            <div class="row section-row align-items-center">
-                <div class="col-lg-6">
-                    <!-- Section Title Start -->
-                    <div class="section-title">
-                        <h3 class="wow fadeInUp">our services</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay="0.25s">The digital solution you need</h2>
-                    </div>
-                    <!-- Section Title End -->
+<!-- Our Services Section Start -->
+<div class="our-services">
+    <div class="container">
+        <div class="row section-row align-items-center">
+            <div class="col-lg-6">
+                <!-- Section Title Start -->
+                <div class="section-title">
+                    <h3 class="wow fadeInUp">our services</h3>
+                    <h2 class="wow fadeInUp" data-wow-delay="0.25s">The digital solution you need</h2>
                 </div>
-
-                <div class="col-lg-6">
-                    <!-- Section Btn Start -->
-                    <div class="section-btn wow fadeInUp" data-wow-delay="0.5s">
-                        <a href="{% url 'web:services' %}" class="btn-default">view all services</a>
-                    </div>
-                    <!-- Section Btn End -->
-                </div>
+                <!-- Section Title End -->
             </div>
 
-            <div class="row">
-                {% for service in services %}
-                <div class="col-lg-4 col-md-6">
-                    <!-- Service Item Start -->
-                    <div class="service-item page-service-item wow fadeInUp" data-wow-delay="0.6s"
-                        style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
-                        <div class="icon-box">
-                            <img src="{% static 'images/icon-services-4.svg' %}" alt="">
-                        </div>
+            <div class="col-lg-6">
+                <!-- Section Btn Start -->
+                <div class="section-btn wow fadeInUp" data-wow-delay="0.5s">
+                    <a href="{% url 'web:services' %}" class="btn-default">view all services</a>
+                </div>
+                <!-- Section Btn End -->
+            </div>
+        </div>
 
-                        <div class="service-category">
-                            <a href="#">{{ service.title }}</a>
-                        </div>
+        <div class="row">
+            {% for service in services %}
+            <div class="col-lg-3 col-md-6">
+                <!-- Service Item Start -->
+                <div class="service-item page-service-item wow fadeInUp" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                    <div class="icon-box">
+                        <img src="{{ service.icon.url }}" alt="">
+                    </div>
 
-                        <div class="service-body">
-                            <div class="service-content">
-                                <h3>{{ service.catagory }}</h3>
-                                <p>{{ service.description }}</p>
-                            </div>
-                            <div class="service-btn">
-                                <a href="service-single.html" class="readmore-btn">read more</a>
-                            </div>
+                    <div class="service-category">
+                        <a href="#">{{ service.title }}</a>
+                    </div>
+
+                    <div class="service-body">
+                        <div class="service-content">
+                            <h3>{{ service.category }}</h3>
+                            <p>{{ service.description }}</p>
+                        </div>
+                        <div class="service-btn">
+                            <a href="{% url 'web:service-single' service.id%}" class="readmore-btn">read more</a>
                         </div>
                     </div>
-                    <!-- Service Item End -->
                 </div>
-                {% endfor %}
-               
+                <!-- Service Item End -->
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+<!-- Our Services Section End -->
+
+
+
+<div class="page-about-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Page About Solutions Start -->
+                <div class="page-about-solutions">
+                    <!-- Page About Box 1 Start -->
+                    <div class="page-about-box-1">
+                        <!-- Page About Content Start -->
+                        <div class="page-about-content">
+                            <!-- Section Title Start -->
+                            <div class="section-title">
+                                <h2 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Our
+                                    commitment to delivering exceptional creative solutions</h2>
+                                <p class="wow fadeInUp" data-wow-delay="0.25s" style="visibility: visible; animation-delay: 0.25s; animation-name: fadeInUp;">
+                                    We are a team of passionate creators, strategists, and innovators dedicated to
+                                    transforming ideas into impactful brand experiences. Founded in 2010, our agency
+                                    was born out of a desire to help businesses tell their unique stories through
+                                    compelling design and effective marketing strategies.</p>
+                            </div>
+                            <!-- Section Title End -->
+
+                            <!-- Contact Now Image Start -->
+                            <div class="contact-now-image">
+                                <img src="{% static 'images/icon-contact-now.svg' %}" alt="">
+                            </div>
+                            <!-- Contact Now Image End -->
+                        </div>
+                        <!-- Page About Content End -->
+
+                        <!-- Page About Image Start -->
+                        <div class="page-about-image">
+                            <figure class="reveal image-anime" style="transform: translate(0px, 0px); opacity: 1; visibility: inherit;">
+                                <img src="{% static 'images/page-about-img-1.jpg' %}" alt="" style="transform: translate(0px, 0px);">
+                            </figure>
+                        </div>
+                        <!-- Page About Image End -->
+                    </div>
+                    <!-- Page About Box 1 End -->
+
+                    <!-- Page About Box 2 Start -->
+                    <div class="page-about-box-2">
+                        <!-- Page About Image Start -->
+                        <div class="page-about-image">
+                            <figure class="reveal image-anime" style="transform: translate(0px, 0px); opacity: 1; visibility: inherit;">
+                                <img src="{% static 'images/page-about-img-2.jpg' %}" alt="" style="transform: translate(0px, 0px);">
+                            </figure>
+                        </div>
+                        <!-- Page About Image End -->
+
+                        <!-- Page About Content Start -->
+                        <div class="page-about-content">
+                            <p class="wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                                Collaboration is at the heart of what we do. We work closely with our clients to
+                                understand their goals and vision, ensuring that every project is tailored to their
+                                specific needs. Our creative process is transparent and inclusive, allowing for
+                                continuous feedback and refinement.</p>
+                            <p class="wow fadeInUp" data-wow-delay="0.75s" style="visibility: visible; animation-delay: 0.75s; animation-name: fadeInUp;">Our
+                                mission is simple: to empower brands by delivering exceptional creative solutions
+                                that resonate with their target audiences. We believe that every brand has a story
+                                worth telling, and we're here to help you share it in the most engaging and
+                                authentic way possible.</p>
+                        </div>
+                        <!-- Page About Content End -->
+                    </div>
+                    <!-- Page About Box 2 End -->
+                </div>
+                <!-- Page About Solutions End -->
             </div>
         </div>
     </div>
-    <!-- Our Services Section End -->
+</div>
 
-
-
-    <div class="page-about-us">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Page About Solutions Start -->
-                    <div class="page-about-solutions">
-                        <!-- Page About Box 1 Start -->
-                        <div class="page-about-box-1">
-                            <!-- Page About Content Start -->
-                            <div class="page-about-content">
-                                <!-- Section Title Start -->
-                                <div class="section-title">
-                                    <h2 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Our
-                                        commitment to delivering exceptional creative solutions</h2>
-                                    <p class="wow fadeInUp" data-wow-delay="0.25s"
-                                        style="visibility: visible; animation-delay: 0.25s; animation-name: fadeInUp;">
-                                        We are a team of passionate creators, strategists, and innovators dedicated to
-                                        transforming ideas into impactful brand experiences. Founded in 2010, our agency
-                                        was born out of a desire to help businesses tell their unique stories through
-                                        compelling design and effective marketing strategies.</p>
-                                </div>
-                                <!-- Section Title End -->
-
-                                <!-- Contact Now Image Start -->
-                                <div class="contact-now-image">
-                                    <img src="{% static 'images/icon-contact-now.svg' %}" alt="">
-                                </div>
-                                <!-- Contact Now Image End -->
-                            </div>
-                            <!-- Page About Content End -->
-
-                            <!-- Page About Image Start -->
-                            <div class="page-about-image">
-                                <figure class="reveal image-anime"
-                                    style="transform: translate(0px, 0px); opacity: 1; visibility: inherit;">
-                                    <img src="{% static 'images/page-about-img-1.jpg' %}" alt=""
-                                        style="transform: translate(0px, 0px);">
-                                </figure>
-                            </div>
-                            <!-- Page About Image End -->
-                        </div>
-                        <!-- Page About Box 1 End -->
-
-                        <!-- Page About Box 2 Start -->
-                        <div class="page-about-box-2">
-                            <!-- Page About Image Start -->
-                            <div class="page-about-image">
-                                <figure class="reveal image-anime"
-                                    style="transform: translate(0px, 0px); opacity: 1; visibility: inherit;">
-                                    <img src="{% static 'images/page-about-img-2.jpg' %}" alt=""
-                                        style="transform: translate(0px, 0px);">
-                                </figure>
-                            </div>
-                            <!-- Page About Image End -->
-
-                            <!-- Page About Content Start -->
-                            <div class="page-about-content">
-                                <p class="wow fadeInUp" data-wow-delay="0.5s"
-                                    style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-                                    Collaboration is at the heart of what we do. We work closely with our clients to
-                                    understand their goals and vision, ensuring that every project is tailored to their
-                                    specific needs. Our creative process is transparent and inclusive, allowing for
-                                    continuous feedback and refinement.</p>
-                                <p class="wow fadeInUp" data-wow-delay="0.75s"
-                                    style="visibility: visible; animation-delay: 0.75s; animation-name: fadeInUp;">Our
-                                    mission is simple: to empower brands by delivering exceptional creative solutions
-                                    that resonate with their target audiences. We believe that every brand has a story
-                                    worth telling, and we're here to help you share it in the most engaging and
-                                    authentic way possible.</p>
-                            </div>
-                            <!-- Page About Content End -->
-                        </div>
-                        <!-- Page About Box 2 End -->
-                    </div>
-                    <!-- Page About Solutions End -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- <section class="text-olny-section">
+<!-- <section class="text-olny-section">
         <video src="{% static 'images/globe2.mp4' %}" autoplay muted loop id="myVideo"></video>
         <div>
             <h2 class="text-reveal">Lorem ipsum dolor sit amet consectetur ellat ducimus rerum neque laborum quo aliquam
@@ -203,688 +187,564 @@
 
 
 
-    <section class="clients">
-        <div class="container">
-           <div class="row section-row align-items-center">
-                <div class="col-lg-6">
-                    <!-- Section Title Start -->
-                    <div class="section-title">
-                        <h3 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Clients</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay="0.25s" style="visibility: visible; animation-delay: 0.25s; animation-name: fadeInUp;">Partners & clients</h2>
-                    </div>
-                    <!-- Section Title End -->
+<section class="clients">
+    <div class="container">
+        <div class="row section-row align-items-center">
+            <div class="col-lg-6">
+                <!-- Section Title Start -->
+                <div class="section-title">
+                    <h3 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Clients</h3>
+                    <h2 class="wow fadeInUp" data-wow-delay="0.25s" style="visibility: visible; animation-delay: 0.25s; animation-name: fadeInUp;">Partners & clients</h2>
                 </div>
-              
+                <!-- Section Title End -->
             </div>
 
-
-            <div class="content-box">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <div class="img-box">
-                            <img src="{% static 'devlanzio/clients/morries.svg' %}" alt="">
-                        </div>
-                    </div>
-
-                      <div class="col-lg-2">
-                        <div class="img-box">
-                            <img src="{% static 'devlanzio/clients/newsmirror.svg' %}" alt="">
-                        </div>
-                    </div>
-
-                      <div class="col-lg-2">
-                        <div class="img-box">
-                            <img src="{% static 'devlanzio/clients/sterling.svg' %}" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2">
-                        <div class="img-box">
-                            <img src="{% static 'devlanzio/clients/tendercall.svg' %}" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2">
-                        <div class="img-box">
-                            <img src="{% static 'devlanzio/clients/commetline.png' %}" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2">
-                        <div class="img-box">
-                            <img src="{% static 'devlanzio/clients/logo.png' %}" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2">
-                        <div class="img-box">
-                            <img src="{% static 'devlanzio/clients/studysouthindia.png' %}" alt="">
-                        </div>
-                    </div>
-
-   
-                
-                   
-
-                </div>
-            </div>
         </div>
-    </section>
 
 
-    <!-- Our Work Section Start -->
-    <div class="our-works">
-        <div class="container">
-            <div class="row section-row align-items-center">
-                <div class="col-lg-6">
-                    <!-- Section Title Start -->
-                    <div class="section-title">
-                        <h3 class="wow fadeInUp">our works</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay="0.25s">Showcasing our creative excellence</h2>
-                    </div>
-                    <!-- Section Title End -->
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- Section Btn Start -->
-                    <div class="section-btn wow fadeInUp" data-wow-delay="0.5s">
-                        <a href="portfolio.html" class="btn-default">view all portfolio</a>
-                    </div>
-                    <!-- Section Btn End -->
-                </div>
-            </div>
-
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <!-- Our Work Item Start -->
-                    <div class="our-work-item work-box">
-                        <!-- Work Item Image Start -->
-                        <div class="work-item-image">
-                            <a href="portfolio-single.html" data-cursor-text="View">
-                                <figure class="image-anime reveal">
-                                    <img src="{{ last_1_work.image.url }}" alt="">
-                                </figure>
-                            </a>
-
-                            <!-- Work ReadMore Btn Start -->
-                            <div class="work-readmore-btn">
-                                <a href="portfolio-single.html"><img src="{% static 'images/icon-plus.svg' %}" alt=""></a>
-                            </div>
-                            <!-- Work ReadMore Btn End -->
-                        </div>
-                        <!-- Work Item Image End -->
-
-                        <!-- Work Item Body Start -->
-                        <div class="work-item-body wow fadeInUp">
-                            <!-- Work Item Title Start -->
-                            <div class="work-item-title">
-                                <h3>{{last_1_work.title}}</h3>
-                            </div>
-                            <!-- Work Item Title End -->
-
-                            <!-- Work Item Tags Start -->
-                            <div class="work-item-tags">
-                                <ul>
-                                    <li>{{last_1_work.catagory}}</li>
-                                </ul>
-                            </div>
-                            <!-- Work Item Tags End -->
-                        </div>
-                        <!-- Work Item Body End -->
-
-                        <!-- Work Item Content Start -->
-                        <div class="work-item-content wow fadeInUp">
-                            <p>{{last_1_work.description}}</p>
-                        </div>
-                        <!-- Work Item Content End -->
-                    </div>
-                    <!-- Our Work Item End -->
-                </div>
-
-                <div class="col-md-6">
-                    <!-- Our Work Item Start -->
-                    <div class="our-work-item">
-                        <!-- Work Item Image Start -->
-                        <div class="work-item-image">
-                            <a href="portfolio-single.html" data-cursor-text="View">
-                                <figure class="image-anime reveal">
-                                    <img src="{{ last_2_work.image.url }}" alt="">
-                                </figure>
-                            </a>
-
-                            <!-- Work ReadMore Btn Start -->
-                            <div class="work-readmore-btn">
-                                <a href="portfolio-single.html"><img src="{% static 'images/icon-plus.svg' %}" alt=""></a>
-                            </div>
-                            <!-- Work ReadMore Btn End -->
-                        </div>
-                        <!-- Work Item Image End -->
-
-                        <!-- Work Item Body Start -->
-                        <div class="work-item-body wow fadeInUp" data-wow-delay="0.25s">
-                            <!-- Work Item Title Start -->
-                            <div class="work-item-title">
-                                <h3>{{last_2_work.title}}</h3>
-                            </div>
-                            <!-- Work Item Title End -->
-
-                            <!-- Work Item Tags Start -->
-                            <div class="work-item-tags">
-                                <ul>
-                                    <li>{{last_2_work.catagory}}</li>
-                                </ul>
-                            </div>
-                            <!-- Work Item Tags End -->
-                        </div>
-                        <!-- Work Item Body End -->
-
-                        <!-- Work Item Content Start -->
-                        <div class="work-item-content wow fadeInUp" data-wow-delay="0.25s">
-                            <p>{{last_2_work.description}}</p>
-                        </div>
-                        <!-- Work Item Content End -->
-                    </div>
-                    <!-- Our Work Item End -->
-                </div>
-
-                <div class="col-lg-12">
-                    <!-- Our Work Item Start -->
-                    <div class="our-work-item work-box work-highlighted-box">
-                        <!-- Work Item Image Start -->
-                        <div class="work-item-image">
-                            <a href="portfolio-single.html" data-cursor-text="View">
-                                <figure class="image-anime reveal">
-                                    <img src="{{ last_3_works.image.url }}" alt="">
-                                </figure>
-                            </a>
-
-                            <!-- Work ReadMore Btn Start -->
-                            <div class="work-readmore-btn">
-                                <a href="portfolio-single.html"><img src="{% static 'images/icon-plus.svg' %}" alt=""></a>
-                            </div>
-                            <!-- Work ReadMore Btn End -->
-                        </div>
-                        <!-- Work Item Image End -->
-
-                        <!-- Work Item Body Start -->
-                        <div class="work-item-body wow fadeInUp" data-wow-delay="0.5s">
-                            <!-- Work Item Title Start -->
-                            <div class="work-item-title">
-                                <h3>{{last_3_work.title}}</h3>
-                            </div>
-                            <!-- Work Item Title End -->
-
-                            <!-- Work Item Tags Start -->
-                            <div class="work-item-tags">
-                                <ul>
-                                    <li>{{last_3_work.catagory}}</li>
-                                </ul>
-                            </div>
-                            <!-- Work Item Tags End -->
-                        </div>
-                        <!-- Work Item Body End -->
-
-                        <!-- Work Item Content Start -->
-                        <div class="work-item-content wow fadeInUp" data-wow-delay="0.5s">
-                            <p>{{last_3_work.description}}</p>
-                        </div>
-                        <!-- Work Item Content End -->
-                    </div>
-                    <!-- Our Work Item End -->
-                </div>
-
-                <div class="col-md-6">
-                    <!-- Our Work Item Start -->
-                    <div class="our-work-item">
-                        <!-- Work Item Image Start -->
-                        <div class="work-item-image">
-                            <a href="portfolio-single.html" data-cursor-text="View">
-                                <figure class="image-anime reveal">
-                                    <img src="{{ last_4_works.image.url }}" alt="">
-                                </figure>
-                            </a>
-
-                            <!-- Work ReadMore Btn Start -->
-                            <div class="work-readmore-btn">
-                                <a href="portfolio-single.html"><img src="{% static 'images/icon-plus.svg' %}" alt=""></a>
-                            </div>
-                            <!-- Work ReadMore Btn End -->
-                        </div>
-                        <!-- Work Item Image End -->
-
-                        <!-- Work Item Body Start -->
-                        <div class="work-item-body wow fadeInUp" data-wow-delay="0.75s">
-                            <!-- Work Item Title Start -->
-                            <div class="work-item-title">
-                                <h3>{{last_4_work.title}}</h3>
-                            </div>
-                            <!-- Work Item Title End -->
-
-                            <!-- Work Item Tags Start -->
-                            <div class="work-item-tags">
-                                <ul>
-                                    <li>{{last_4_work.catagory}}</li>
-                                </ul>
-                            </div>
-                            <!-- Work Item Tags End -->
-                        </div>
-                        <!-- Work Item Body End -->
-
-                        <!-- Work Item Content Start -->
-                        <div class="work-item-content wow fadeInUp" data-wow-delay="0.75s">
-                            <p>{{last_4_work.description}}</p>
-                        </div>
-                        <!-- Work Item Content End -->
-                    </div>
-                    <!-- Our Work Item End -->
-                </div>
-
-                <div class="col-md-6">
-                    <!-- Our Work Item Start -->
-                    <div class="our-work-item work-box">
-                        <!-- Work Item Image Start -->
-                        <div class="work-item-image">
-                            <a href="portfolio-single.html" data-cursor-text="View">
-                                <figure class="image-anime reveal">
-                                    <img src="{% static 'images/portfolio-img-5.jpg' %}" alt="">
-                                </figure>
-                            </a>
-
-                            <div class="work-readmore-btn">
-                                <a href="portfolio-single.html"><img src="{% static 'images/icon-plus.svg' %}" alt=""></a>
-                            </div>
-                        </div>
-                        <!-- Work Item Image End -->
-
-                        <!-- Work Item Body Start -->
-                        <div class="work-item-body wow fadeInUp" data-wow-delay="1s">
-                            <!-- Work Item Title Start -->
-                            <div class="work-item-title">
-                                <h3>social media strategy</h3>
-                            </div>
-                            <!-- Work Item Title End -->
-
-                            <!-- Work Item Tags Start -->
-                            <div class="work-item-tags">
-                                <ul>
-                                    <li>UI/UX design</li>
-                                </ul>
-                            </div>
-                            <!-- Work Item Tags End -->
-                        </div>
-                        <!-- Work Item Body End -->
-
-                        <!-- Work Item Content Start -->
-                        <div class="work-item-content wow fadeInUp" data-wow-delay="1s">
-                            <p>Our team focused on content creation, including blog posts, scheduling, and audience
-                                interaction.</p>
-                        </div>
-                        <!-- Work Item Content End -->
-                    </div>
-                    <!-- Our Work Item End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Our Work Section End -->
-
-
-
-
-    <!-- Working Process Section Start -->
-    <div class="working-process">
-        <div class="container">
-            <div class="row section-row align-items-center">
-                <div class="col-lg-6">
-                    <!-- Section Title Start -->
-                    <div class="section-title">
-                        <h3 class="wow fadeInUp">how it works</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay="0.25s">Collaborative journey from concept to execute
-                        </h2>
-                    </div>
-                    <!-- Section Title End -->
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- Section Btn Start -->
-                    <div class="section-btn wow fadeInUp" data-wow-delay="0.5s">
-                        <a href="contact.html" class="btn-default">contact us</a>
-                    </div>
-                    <!-- Section Btn End -->
-                </div>
-            </div>
-
-            <div class="row wow fadeInUp" data-wow-delay="0.5s">
-                <div class="col-lg-3 col-md-6">
-                    <!-- Working Process Step Start -->
-                    <div class="working-process-step">
-                        <div class="working-process-header">
-                            <div class="working-process-title">
-                                <h3>research</h3>
-                            </div>
-                            <div class="working-process-no">
-                                <p>1</p>
-                            </div>
-                        </div>
-
-                        <div class="working-process-content">
-                            <p>Research needs and trends for informed decisions.</p>
-                        </div>
-                    </div>
-                    <!-- Working Process Step End -->
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <!-- Working Process Step Start -->
-                    <div class="working-process-step">
-                        <div class="working-process-header">
-                            <div class="working-process-title">
-                                <h3>planning</h3>
-                            </div>
-                            <div class="working-process-no">
-                                <p>2</p>
-                            </div>
-                        </div>
-
-                        <div class="working-process-content">
-                            <p>Planning is actions to achieve business goals.</p>
-                        </div>
-                    </div>
-                    <!-- Working Process Step End -->
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <!-- Working Process Step Start -->
-                    <div class="working-process-step">
-                        <div class="working-process-header">
-                            <div class="working-process-title">
-                                <h3>development</h3>
-                            </div>
-                            <div class="working-process-no">
-                                <p>3</p>
-                            </div>
-                        </div>
-
-                        <div class="working-process-content">
-                            <p>Enhance offerings based on feedback and innovation.</p>
-                        </div>
-                    </div>
-                    <!-- Working Process Step End -->
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <!-- Working Process Step Start -->
-                    <div class="working-process-step">
-                        <div class="working-process-header">
-                            <div class="working-process-title">
-                                <h3>launch</h3>
-                            </div>
-                            <div class="working-process-no">
-                                <p>4</p>
-                            </div>
-                        </div>
-
-                        <div class="working-process-content">
-                            <p>Introduce products/services with a strategic rollout.</p>
-                        </div>
-                    </div>
-                    <!-- Working Process Step End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Working Process End Start -->
-
-
-
-
-    <!-- Our Testimonials Section Start -->
-    <div class="our-testimonials">
-        <div class="container">
-            <div class="row section-row align-items-center">
-                <div class="col-lg-6">
-                    <!-- Section Title Start -->
-                    <div class="section-title">
-                        <h3 class="wow fadeInUp">testimonials</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay="0.25s">Success stories that speak for themselves</h2>
-                    </div>
-                    <!-- Section Title End -->
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- Section Btn Start -->
-                    <div class="section-btn wow fadeInUp" data-wow-delay="0.5s">
-                        <a href="contact.html" class="btn-default">contact now</a>
-                    </div>
-                    <!-- Section Btn End -->
-                </div>
-            </div>
-
+        <div class="content-box">
             <div class="row">
-                <div class="col-lg-12">
-                    <!-- Testimonial Slider Start -->
-                    <div class="testimonial-slider">
-                        <div class="swiper">
-                            <div class="swiper-wrapper" data-cursor-text="Drag">
+                {% for client in clients %}
+                <div class="col-lg-2">
+                    <div class="img-box">
+                        <img src="{{client.image.url}}" alt="">
+                    </div>
+                </div>
+                {% endfor %}
 
 
-                                <!-- Testimonial Slide Start -->
-                                {% for testimonial in testimonials %}
-                                <div class="swiper-slide">
-                                    <div class="testimonial-item">
-                                        <div class="testimonial-header">
-                                            <div class="testimonial-rating">
-                                                <img src="{% static 'images/icon-star.svg' %}" alt="">
-                                            </div>
-                                            <div class="testimonial-quote">
-                                                <img src="{% static 'images/testimonial-quote.svg' %}" alt="">
-                                            </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Our Work Section Start -->
+<div class="our-works">
+    <div class="container">
+        <div class="row section-row align-items-center">
+            <div class="col-lg-6">
+                <!-- Section Title Start -->
+                <div class="section-title">
+                    <h3 class="wow fadeInUp">our works</h3>
+                    <h2 class="wow fadeInUp" data-wow-delay="0.25s">Showcasing our creative excellence</h2>
+                </div>
+                <!-- Section Title End -->
+            </div>
+
+            <div class="col-lg-6">
+                <!-- Section Btn Start -->
+                <div class="section-btn wow fadeInUp" data-wow-delay="0.5s">
+                    <a href="{% url 'web:works' %}" class="btn-default">view all portfolio</a>
+                </div>
+                <!-- Section Btn End -->
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                {% if last_1_work %}
+                <!-- Our Work Item Start -->
+                <div class="our-work-item work-box">
+                    <!-- Work Item Image Start -->
+                    <div class="work-item-image">
+                        <a href="{% url 'web:work-single' last_1_work.id %}" data-cursor-text="View">
+                            <figure class="image-anime reveal">
+                                <img src="{{ last_1_work.image.url }}" alt="">
+                            </figure>
+                        </a>
+
+                        <!-- Work ReadMore Btn Start -->
+                        <div class="work-readmore-btn">
+                            <a href="{% url 'web:work-single' last_1_work.id %}"><img src=" {% static 'images/icon-plus.svg' %}" alt=""></a>
+                        </div>
+                        <!-- Work ReadMore Btn End -->
+                    </div>
+                    <!-- Work Item Image End -->
+
+                    <!-- Work Item Body Start -->
+                    <div class="work-item-body wow fadeInUp">
+                        <!-- Work Item Title Start -->
+                        <div class="work-item-title">
+
+                            <h3> {% if last_1_work %} {{last_1_work.title}} {% endif %}</h3>
+                        </div>
+                        <!-- Work Item Title End -->
+
+                        <!-- Work Item Tags Start -->
+                        <div class="work-item-tags">
+                            <ul>
+                                <li> {% if last_1_work %} {{last_1_work.category}} {% endif %}</li>
+                            </ul>
+                        </div>
+                        <!-- Work Item Tags End -->
+                    </div>
+                    <!-- Work Item Body End -->
+
+                    <!-- Work Item Content Start -->
+                    <div class="work-item-content wow fadeInUp">
+                        <p>{% if last_1_work %} {{last_1_work.description}} {% endif %}</p>
+                    </div>
+                    <!-- Work Item Content End -->
+                </div>
+                <!-- Our Work Item End -->
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                {% if last_2_work %}
+                <!-- Our Work Item Start -->
+                <div class="our-work-item">
+                    <!-- Work Item Image Start -->
+                    <div class="work-item-image">
+                        <a href="{% url 'web:work-single' last_2_work.id %}" data-cursor-text="View">
+                            <figure class="image-anime reveal">
+                                <img src="{{ last_2_work.image.url }}" alt="">
+                            </figure>
+                        </a>
+
+                        <!-- Work ReadMore Btn Start -->
+                        <div class="work-readmore-btn">
+                            <a href="{% url 'web:work-single' last_2_work.id %}"><img src="{% static 'images/icon-plus.svg' %}" alt=""></a>
+                        </div>
+                        <!-- Work ReadMore Btn End -->
+                    </div>
+                    <!-- Work Item Image End -->
+
+                    <!-- Work Item Body Start -->
+                    <div class="work-item-body wow fadeInUp" data-wow-delay="0.25s">
+                        <!-- Work Item Title Start -->
+                        <div class="work-item-title">
+                            <h3>{{last_2_work.title}}</h3>
+                        </div>
+                        <!-- Work Item Title End -->
+
+                        <!-- Work Item Tags Start -->
+                        <div class="work-item-tags">
+                            <ul>
+                                <li>{{last_2_work.category}}</li>
+                            </ul>
+                        </div>
+                        <!-- Work Item Tags End -->
+                    </div>
+                    <!-- Work Item Body End -->
+
+                    <!-- Work Item Content Start -->
+                    <div class="work-item-content wow fadeInUp" data-wow-delay="0.25s">
+                        <p>{{last_2_work.description}}</p>
+                    </div>
+                    <!-- Work Item Content End -->
+                </div>
+                <!-- Our Work Item End -->
+                {% endif %}
+            </div>
+
+            <div class="col-lg-12">
+                {% if last_3_work %}
+                <!-- Our Work Item Start -->
+                <div class="our-work-item work-box work-highlighted-box">
+                    <!-- Work Item Image Start -->
+                    <div class="work-item-image">
+                        <a href="{% url 'web:work-single' last_3_work.id %}" data-cursor-text="View">
+                            <figure class="image-anime reveal">
+                                <img src="{{ last_3_work.image.url }}" alt="">
+                            </figure>
+                        </a>
+
+                        <!-- Work ReadMore Btn Start -->
+                        <div class="work-readmore-btn">
+                            <a href="{% url 'web:work-single' last_3_work.id %}"><img src="{% static 'images/icon-plus.svg' %}" alt=""></a>
+                        </div>
+                        <!-- Work ReadMore Btn End -->
+                    </div>
+                    <!-- Work Item Image End -->
+
+                    <!-- Work Item Body Start -->
+                    <div class="work-item-body wow fadeInUp" data-wow-delay="0.5s">
+                        <!-- Work Item Title Start -->
+                        <div class="work-item-title">
+                            <h3>{{last_3_work.title}}</h3>
+                        </div>
+                        <!-- Work Item Title End -->
+
+                        <!-- Work Item Tags Start -->
+                        <div class="work-item-tags">
+                            <ul>
+                                <li>{{last_3_work.category}}</li>
+                            </ul>
+                        </div>
+                        <!-- Work Item Tags End -->
+                    </div>
+                    <!-- Work Item Body End -->
+
+                    <!-- Work Item Content Start -->
+                    <div class="work-item-content wow fadeInUp" data-wow-delay="0.5s">
+                        <p>{{last_3_work.description}}</p>
+                    </div>
+                    <!-- Work Item Content End -->
+                </div>
+                <!-- Our Work Item End -->
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                {% if last_4_work %}
+                <!-- Our Work Item Start -->
+                <div class="our-work-item">
+                    <!-- Work Item Image Start -->
+                    <div class="work-item-image">
+                        <a href="{% url 'web:work-single' last_4_work.id %}" data-cursor-text="View">
+                            <figure class="image-anime reveal">
+                                <img src="{{ last_4_work.image.url }}" alt="">
+                            </figure>
+                        </a>
+
+                        <!-- Work ReadMore Btn Start -->
+                        <div class="work-readmore-btn">
+                            <a href="{% url 'web:work-single' last_4_work.id %}"><img src="{% static 'images/icon-plus.svg' %}" alt=""></a>
+                        </div>
+                        <!-- Work ReadMore Btn End -->
+                    </div>
+                    <!-- Work Item Image End -->
+
+                    <!-- Work Item Body Start -->
+                    <div class="work-item-body wow fadeInUp" data-wow-delay="0.75s">
+                        <!-- Work Item Title Start -->
+                        <div class="work-item-title">
+                            <h3>{{last_4_work.title}}</h3>
+                        </div>
+                        <!-- Work Item Title End -->
+
+                        <!-- Work Item Tags Start -->
+                        <div class="work-item-tags">
+                            <ul>
+                                <li>{{last_4_work.category}}</li>
+                            </ul>
+                        </div>
+                        <!-- Work Item Tags End -->
+                    </div>
+                    <!-- Work Item Body End -->
+
+                    <!-- Work Item Content Start -->
+                    <div class="work-item-content wow fadeInUp" data-wow-delay="0.75s">
+                        <p>{{last_4_work.description}}</p>
+                    </div>
+                    <!-- Work Item Content End -->
+                </div>
+                <!-- Our Work Item End -->
+                {% endif %}
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- Our Work Section End -->
+
+
+
+
+<!-- Working Process Section Start -->
+<div class="working-process">
+    <div class="container">
+        <div class="row section-row align-items-center">
+            <div class="col-lg-6">
+                <!-- Section Title Start -->
+                <div class="section-title">
+                    <h3 class="wow fadeInUp">how it works</h3>
+                    <h2 class="wow fadeInUp" data-wow-delay="0.25s">Collaborative journey from concept to execute
+                    </h2>
+                </div>
+                <!-- Section Title End -->
+            </div>
+
+            <div class="col-lg-6">
+                <!-- Section Btn Start -->
+                <div class="section-btn wow fadeInUp" data-wow-delay="0.5s">
+                    <a href="{% url 'web:contact' %}" class="btn-default">contact us</a>
+                </div>
+                <!-- Section Btn End -->
+            </div>
+        </div>
+
+        <div class="row wow fadeInUp" data-wow-delay="0.5s">
+            <div class="col-lg-3 col-md-6">
+                <!-- Working Process Step Start -->
+                <div class="working-process-step">
+                    <div class="working-process-header">
+                        <div class="working-process-title">
+                            <h3>research</h3>
+                        </div>
+                        <div class="working-process-no">
+                            <p>1</p>
+                        </div>
+                    </div>
+
+                    <div class="working-process-content">
+                        <p>Research needs and trends for informed decisions.</p>
+                    </div>
+                </div>
+                <!-- Working Process Step End -->
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <!-- Working Process Step Start -->
+                <div class="working-process-step">
+                    <div class="working-process-header">
+                        <div class="working-process-title">
+                            <h3>planning</h3>
+                        </div>
+                        <div class="working-process-no">
+                            <p>2</p>
+                        </div>
+                    </div>
+
+                    <div class="working-process-content">
+                        <p>Planning is actions to achieve business goals.</p>
+                    </div>
+                </div>
+                <!-- Working Process Step End -->
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <!-- Working Process Step Start -->
+                <div class="working-process-step">
+                    <div class="working-process-header">
+                        <div class="working-process-title">
+                            <h3>development</h3>
+                        </div>
+                        <div class="working-process-no">
+                            <p>3</p>
+                        </div>
+                    </div>
+
+                    <div class="working-process-content">
+                        <p>Enhance offerings based on feedback and innovation.</p>
+                    </div>
+                </div>
+                <!-- Working Process Step End -->
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <!-- Working Process Step Start -->
+                <div class="working-process-step">
+                    <div class="working-process-header">
+                        <div class="working-process-title">
+                            <h3>launch</h3>
+                        </div>
+                        <div class="working-process-no">
+                            <p>4</p>
+                        </div>
+                    </div>
+
+                    <div class="working-process-content">
+                        <p>Introduce products/services with a strategic rollout.</p>
+                    </div>
+                </div>
+                <!-- Working Process Step End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Working Process End Start -->
+
+
+
+
+<!-- Our Testimonials Section Start -->
+<div class="our-testimonials">
+    <div class="container">
+        <div class="row section-row align-items-center">
+            <div class="col-lg-6">
+                <!-- Section Title Start -->
+                <div class="section-title">
+                    <h3 class="wow fadeInUp">testimonials</h3>
+                    <h2 class="wow fadeInUp" data-wow-delay="0.25s">Success stories that speak for themselves</h2>
+                </div>
+                <!-- Section Title End -->
+            </div>
+
+            <div class="col-lg-6">
+                <!-- Section Btn Start -->
+                <div class="section-btn wow fadeInUp" data-wow-delay="0.5s">
+                    <a href="{% url 'web:contact' %}" class="btn-default">contact now</a>
+                </div>
+                <!-- Section Btn End -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Testimonial Slider Start -->
+                <div class="testimonial-slider">
+                    <div class="swiper">
+                        <div class="swiper-wrapper" data-cursor-text="Drag">
+
+
+                            <!-- Testimonial Slide Start -->
+                            {% for testimonial in testimonials %}
+                            <div class="swiper-slide">
+                                <div class="testimonial-item">
+                                    <div class="testimonial-header">
+                                        <div class="testimonial-rating">
+                                            <img src="{% static 'images/icon-star.svg' %}" alt="">
                                         </div>
-
-                                        <div class="testimonial-content">
-                                            <p>{{ testimonial.description }}</p>
+                                        <div class="testimonial-quote">
+                                            <img src="{% static 'images/testimonial-quote.svg' %}" alt="">
                                         </div>
+                                    </div>
 
-                                        <div class="testimonial-body">
-                                            <div class="author-image">
-                                                <figure class="image-anime">
-                                                    <img src="{{ testimonial.image.url }}" alt="">
-                                                </figure>
-                                            </div>
-                                            <div class="author-content">
-                                                <h3>{{ testimonial.name }}</h3>
-                                                <p>{{ testimonial.designation }}</p>
-                                            </div>
+                                    <div class="testimonial-content">
+                                        <p>{{ testimonial.description }}</p>
+                                    </div>
+
+                                    <div class="testimonial-body">
+                                        <div class="author-image">
+                                            <figure class="image-anime">
+                                                <img src="{{ testimonial.image.url }}" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="author-content">
+                                            <h3>{{ testimonial.name }}</h3>
+                                            <p>{{ testimonial.designation }}</p>
                                         </div>
                                     </div>
                                 </div>
-                                {% endfor %}
-
-                                <!-- Testimonial Slide End -->
-
-                             
                             </div>
+                            {% endfor %}
+
+                            <!-- Testimonial Slide End -->
+
+
                         </div>
                     </div>
-                    <!-- Testimonial Slider End -->
                 </div>
+                <!-- Testimonial Slider End -->
             </div>
         </div>
     </div>
-    <!-- Our Testimonials Section End -->
+</div>
+<!-- Our Testimonials Section End -->
 
 
 
 
-    <!-- Our Blog Section Start -->
-    <div class="our-blog">
-        <div class="container">
-            <div class="row">
-                <div class="row section-row align-items-center">
-                    <div class="col-lg-6">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">Insights</h3>
-                            <h2 class="wow fadeInUp" data-wow-delay="0.25s">Discover the latest insights and trends</h2>
-                        </div>
-                        <!-- Section Title End -->
+<!-- Our Blog Section Start -->
+<div class="our-blog">
+    <div class="container">
+        <div class="row">
+            <div class="row section-row align-items-center">
+                <div class="col-lg-6">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">Insights</h3>
+                        <h2 class="wow fadeInUp" data-wow-delay="0.25s">Discover the latest insights and trends</h2>
                     </div>
-
-                    <div class="col-lg-6">
-                        <!-- Section Btn Start -->
-                        <div class="section-btn wow fadeInUp" data-wow-delay="0.5s">
-                            <a href="blog.html" class="btn-default">view all blog</a>
-                        </div>
-                        <!-- Section Btn End -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <!-- Blog Item Start -->
-                    <div class="blog-item wow fadeInUp">
-                        <!-- Blog Featured Image Start-->
-                        <div class="blog-featured-image">
-                            <figure>
-                                <a href="blog-single.html" class="image-anime" data-cursor-text="View">
-                                    <img src="{% static 'images/post-1.jpg' %}" alt="">
-                                </a>
-                            </figure>
-                        </div>
-                        <!-- Blog Featured Image End -->
-
-                        <!-- Blog Item Body Start -->
-                        <div class="blog-item-body">
-                            <!-- Blog Item Content Start -->
-                            <div class="blog-item-content">
-                                <h3><a href="blog-single.html">How a strong identity can elevate your business</a></h3>
-                            </div>
-                            <!-- Blog Item Content End -->
-
-                            <!-- Blog Item Readmore Button Start-->
-                            <div class="blog-item-btn">
-                                <a href="blog-single.html" class="readmore-btn">read more</a>
-                            </div>
-                            <!-- Blog Item Readmore Button End-->
-                        </div>
-                        <!-- Blog Item Body End -->
-                    </div>
-                    <!-- Blog Item End -->
+                    <!-- Section Title End -->
                 </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <!-- Blog Item Start -->
-                    <div class="blog-item wow fadeInUp" data-wow-delay="0.25s">
-                        <!-- Blog Featured Image Start-->
-                        <div class="blog-featured-image">
-                            <figure>
-                                <a href="blog-single.html" class="image-anime" data-cursor-text="View">
-                                    <img src="{% static 'images/post-2.jpg' %}" alt="">
-                                </a>
-                            </figure>
-                        </div>
-                        <!-- Blog Featured Image End -->
-
-                        <!-- Blog Item Body Start -->
-                        <div class="blog-item-body">
-                            <!-- Blog Item Content Start -->
-                            <div class="blog-item-content">
-                                <h3><a href="blog-single.html">How to create a user friendly experience</a></h3>
-                            </div>
-                            <!-- Blog Item Content End -->
-
-                            <!-- Blog Item Readmore Button Start-->
-                            <div class="blog-item-btn">
-                                <a href="blog-single.html" class="readmore-btn">read more</a>
-                            </div>
-                            <!-- Blog Item Readmore Button End-->
-                        </div>
-                        <!-- Blog Item Body End -->
+                <div class="col-lg-6">
+                    <!-- Section Btn Start -->
+                    <div class="section-btn wow fadeInUp" data-wow-delay="0.5s">
+                        <a href="#" class="btn-default">view all blog</a>
                     </div>
-                    <!-- Blog Item End -->
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <!-- Blog Item Start -->
-                    <div class="blog-item wow fadeInUp" data-wow-delay="0.5s">
-                        <!-- Blog Featured Image Start-->
-                        <div class="blog-featured-image">
-                            <figure>
-                                <a href="blog-single.html" class="image-anime" data-cursor-text="View">
-                                    <img src="{% static 'images/post-3.jpg' %}" alt="">
-                                </a>
-                            </figure>
-                        </div>
-                        <!-- Blog Featured Image End -->
-
-                        <!-- Blog Item Body Start -->
-                        <div class="blog-item-body">
-                            <!-- Blog Item Content Start -->
-                            <div class="blog-item-content">
-                                <h3><a href="blog-single.html">How to use social media to Boost your brand</a></h3>
-                            </div>
-                            <!-- Blog Item Content End -->
-
-                            <!-- Blog Item Readmore Button Start-->
-                            <div class="blog-item-btn">
-                                <a href="blog-single.html" class="readmore-btn">read more</a>
-                            </div>
-                            <!-- Blog Item Readmore Button End-->
-                        </div>
-                        <!-- Blog Item Body End -->
-                    </div>
-                    <!-- Blog Item End -->
+                    <!-- Section Btn End -->
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Our Blog Section End -->
 
-    <!-- Footer Ticker Start -->
-    <div class="footer-ticker">
-        <!-- Scrolling Ticker Start -->
-        <div class="scrolling-ticker">
-            <!-- Scrolling Ticker Box Start -->
-            <div class="scrolling-ticker-box">
-                <!-- Scrolling Ticker Content Start -->
-                <div class="scrolling-content">
-                    <span>Branding</span>
-                    <span>Development</span>
-                    <span>SEO</span>
-                    <span>Digital Marketing</span>
-                    <span>Branding</span>
-                    <span>Development</span>
-                    <span>SEO</span>
-                    <span>Digital Marketing</span>
-                    <span>Branding</span>
-                    <span>Development</span>
-                    <span>SEO</span>
-                    <span>Digital Marketing</span>
-                </div>
-                <!-- Scrolling Ticker Content End -->
+        <div class="row">
 
-                <!-- Scrolling Ticker Content Start -->
-                <div class="scrolling-content">
-                    <span>Branding</span>
-                    <span>Development</span>
-                    <span>SEO</span>
-                    <span>Digital Marketing</span>
-                    <span>Branding</span>
-                    <span>Development</span>
-                    <span>SEO</span>
-                    <span>Digital Marketing</span>
-                    <span>Branding</span>
-                    <span>Development</span>
-                    <span>SEO</span>
-                    <span>Digital Marketing</span>
+            {% for blog in blogs%}
+            <div class="col-lg-4 col-md-6">
+                <!-- Blog Item Start -->
+                <div class="blog-item wow fadeInUp">
+                    <!-- Blog Featured Image Start-->
+                    <div class="blog-featured-image">
+                        <figure>
+                            <a href="{% url 'web:blog-single' blog.id %}" class="image-anime" data-cursor-text="View">
+                                <img src="{{ blog.image.url }}" alt="">
+                            </a>
+                        </figure>
+                    </div>
+                    <!-- Blog Featured Image End -->
+
+                    <!-- Blog Item Body Start -->
+                    <div class="blog-item-body">
+                        <!-- Blog Item Content Start -->
+                        <div class="blog-item-content">
+                            <h3><a href="{% url 'web:blog-single' blog.id %}">
+                                    {{ blog.title }}
+                                </a></h3>
+                        </div>
+                        <!-- Blog Item Content End -->
+
+                        <!-- Blog Item Readmore Button Start-->
+                        <div class="blog-item-btn">
+                            <a href="{% url 'web:blog-single' blog.id %}" class="readmore-btn">read more</a>
+                        </div>
+                        <!-- Blog Item Readmore Button End-->
+                    </div>
+                    <!-- Blog Item Body End -->
                 </div>
-                <!-- Scrolling Ticker Content End -->
+                <!-- Blog Item End -->
             </div>
-            <!-- Scrolling Ticker Box End -->
-        </div>
-        <!-- Scrolling Ticker End -->
-    </div>
-    <!-- Footer Ticker End -->
+            {% endfor %}
 
-    {% endblock %}
+
+        </div>
+    </div>
+</div>
+<!-- Our Blog Section End -->
+
+<!-- Footer Ticker Start -->
+<div class="footer-ticker">
+    <!-- Scrolling Ticker Start -->
+    <div class="scrolling-ticker">
+        <!-- Scrolling Ticker Box Start -->
+        <div class="scrolling-ticker-box">
+            <!-- Scrolling Ticker Content Start -->
+            <div class="scrolling-content">
+                <span>Branding</span>
+                <span>Development</span>
+                <span>SEO</span>
+                <span>Digital Marketing</span>
+                <span>Branding</span>
+                <span>Development</span>
+                <span>SEO</span>
+                <span>Digital Marketing</span>
+                <span>Branding</span>
+                <span>Development</span>
+                <span>SEO</span>
+                <span>Digital Marketing</span>
+            </div>
+            <!-- Scrolling Ticker Content End -->
+
+            <!-- Scrolling Ticker Content Start -->
+            <div class="scrolling-content">
+                <span>Branding</span>
+                <span>Development</span>
+                <span>SEO</span>
+                <span>Digital Marketing</span>
+                <span>Branding</span>
+                <span>Development</span>
+                <span>SEO</span>
+                <span>Digital Marketing</span>
+                <span>Branding</span>
+                <span>Development</span>
+                <span>SEO</span>
+                <span>Digital Marketing</span>
+            </div>
+            <!-- Scrolling Ticker Content End -->
+        </div>
+        <!-- Scrolling Ticker Box End -->
+    </div>
+    <!-- Scrolling Ticker End -->
+</div>
+<!-- Footer Ticker End -->
+
+{% endblock %}

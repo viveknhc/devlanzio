@@ -19,7 +19,7 @@
 11. Our Testimonial css
 12. Our FAQs css
 13. Our Blog Css
-14. Footer css
+14. Footer 
 15. About us Page css
 16. Services Page css
 17. Service Single css
@@ -1236,6 +1236,10 @@ header.main-header .header-sticky.active {
 
 .service-content p {
 	margin: 0;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 /************************************/
@@ -1425,6 +1429,11 @@ header.main-header .header-sticky.active {
 .work-item-title h3 {
 	font-size: 22px;
 	text-transform: capitalize;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	/* number of lines */
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 .work-item-tags {
@@ -1445,6 +1454,11 @@ header.main-header .header-sticky.active {
 	font-weight: 500;
 	text-transform: capitalize;
 	margin-right: 32px;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	/* number of lines */
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 .work-item-tags ul li:last-child {
@@ -1458,6 +1472,11 @@ header.main-header .header-sticky.active {
 
 .work-item-content P {
 	margin: 0;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	/* number of lines */
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 /************************************/
@@ -1586,9 +1605,17 @@ header.main-header .header-sticky.active {
 	padding: 60px 0;
 }
 
+.our-testimonials .swiper-slide {
+	height: auto;
+}
+
 .testimonial-item {
 	background-color: var(--secondary-color);
 	padding: 50px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .testimonial-slider .swiper-wrapper {
@@ -1608,6 +1635,11 @@ header.main-header .header-sticky.active {
 
 .testimonial-content p {
 	margin: 0;
+	display: -webkit-box;
+	-webkit-line-clamp: 5;
+	/* number of lines */
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 .testimonial-body {
@@ -1639,6 +1671,13 @@ header.main-header .header-sticky.active {
 .author-content p {
 	text-transform: capitalize;
 	margin: 0;
+
+
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	/* number of lines */
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 /************************************/
@@ -5744,20 +5783,19 @@ header.main-header .header-sticky.active {
 
 .clients .img-box {
 	position: relative;
-	display: flex
-;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	height: 100%;
 }
 
-.clients .img-box img{
-   max-width: 130px;
-    height: auto;
+.clients .img-box img {
+	max-width: 130px;
+	height: auto;
 	mix-blend-mode: luminosity;
 }
 
- 
+
 
 
 
@@ -5772,3 +5810,22 @@ header.main-header .header-sticky.active {
 
 
 
+.filter button {
+	border: none;
+	background: rgb(20 20 20);
+	color: rgb(255, 255, 255);
+	font-family: var(--accent-font);
+    font-size: 18px;
+}
+
+.filter button:hover {
+	border: none;
+	background: rgb(20 20 20);
+	color: rgb(255, 255, 255);
+	font-family: var(--accent-font);
+    font-size: 18px;
+}
+
+.filter .dropdown-menu{
+	background-color: red;
+}

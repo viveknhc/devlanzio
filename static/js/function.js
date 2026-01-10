@@ -48,9 +48,9 @@
 			speed: 1000,
 			spaceBetween: 30,
 			loop: true,
-			autoplay: {
-				delay: 5000,
-			},
+			// autoplay: {
+			// 	delay: 5000,
+			// },
 			pagination: {
 				el: '.testimonial-pagination',
 				clickable: true,

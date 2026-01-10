@@ -9,17 +9,34 @@ class HomeBanner(models.Model):
     def __str__(self):
         return self.title
 
+
+class ServiceCategory(models.Model):
+    category = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.category
+
+
 class Service(models.Model):
-    catagory = models.CharField(max_length=100)
+    category = models.ForeignKey(
+        ServiceCategory,
+        on_delete=models.CASCADE,
+        related_name="services"   # 👈 important
+    )
     title = models.CharField(max_length=100)
     description = HTMLField()
-    image = VersatileImageField(upload_to = "service")
+    icon = VersatileImageField(upload_to="service/icons", blank=True, null=True)
+
     def __str__(self):
         return self.title
 
 
 class Works(models.Model):
-    catagory = models.CharField(max_length=100)
+    category = models.ForeignKey(
+        ServiceCategory,
+        on_delete=models.CASCADE,
+        related_name="works"   # 👈 important
+    )
     image = VersatileImageField(upload_to = "works")
     title = models.CharField(max_length=100)
     client = models.CharField(max_length=100)
@@ -61,3 +78,12 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Client(models.Model):
+    title = models.CharField(max_length=100)
+    image = VersatileImageField(upload_to = "journey")
+
+    def __str__(self):
+        return self.title
+    

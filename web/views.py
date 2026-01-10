@@ -1,24 +1,21 @@
 from django.shortcuts import render
-from .models import HomeBanner, Service, Works, Testimonial, Blog, Journey,Contact
+from .models import HomeBanner, Service, ServiceCategory, Works, Testimonial, Blog, Journey,Contact,Client
 from django.shortcuts import render,get_object_or_404
 
 def index(request):
     text= HomeBanner.objects.last()
-
-    print(text)
     services = Service.objects.all()
-
-    last_4_work = list(Works.objects.order_by('-id')[:4])
-
-    last_1_work = last_4_work[-1]       
-    last_2_work = last_4_work[-2:]     
-    last_3_work = last_4_work[-3:] 
-    last_4_work = last_4_work[-4:] 
-
+    works_list = list(Works.objects.order_by('-id')[:4])
+    last_1_work = works_list[-1] if len(works_list) >= 1 else None      
+    last_2_work = works_list[-2] if len(works_list) >= 2 else None    
+    last_3_work = works_list[-3] if len(works_list) >= 3 else None
+    last_4_work = works_list[0] if len(works_list) >= 1 else None
     testimonials = Testimonial.objects.all()
-
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.order_by('-id')[:3]
+   
     journeys = Journey.objects.all()    
+
+    clients = Client.objects.all().order_by('-id')
     context = {"is_index": True,
                "text": text,
                "services": services,
@@ -28,7 +25,9 @@ def index(request):
                "last_4_work": last_4_work,
                "testimonials": testimonials,
                "blogs": blogs,
-               "journeys": journeys}
+               "journeys": journeys,
+                "clients": clients,
+            }
     return render(request, "web/index.html", context)
 
 def about(request):
@@ -60,16 +59,46 @@ def workSingle(request,id):
     return render(request, "web/work-inner.html", context)
 
 def services(request):
+    categories = ServiceCategory.objects.all()
+    selected_category = request.GET.get("category")
+
     services = Service.objects.all()
-    context = {"is_works": True,
-               "services":services}
+
+    if selected_category:
+        services = services.filter(category_id=selected_category)
+
+    context = {
+        "is_works": True,
+        "categories": categories,
+        "services": services,
+        "selected_category": selected_category,
+    }
     return render(request, "web/services.html", context)
+
 
 def serviceSingle(request,id):
     service = get_object_or_404(Service,id=id)
+    works = Works.objects.filter(category_id=service.category_id).order_by('-id')[:3]
     context = {"is_works": True,
-               "service":service
+               "service":service,
+               "works":works
                }
     return render(request, "web/service-inner.html", context)
+
+
+def careers(request):
+
+    context = {"is_works": True}
+          
+    return render(request, "web/careers.html", context)
+
+
+def blogSingle(request,id):
+
+    blog = get_object_or_404(Blog,id=id)    
+    context = {"is_blog": True,
+               "blog":blog}
+          
+    return render(request, "web/blog-single.html", context)
 
 

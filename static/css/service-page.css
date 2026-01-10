@@ -1,0 +1,39 @@
+.services-section {
+    background: #000;
+}
+
+.services-wrapper {
+    margin-top: 64px;
+}
+
+.service-panel {
+    width: 100%;
+    min-height: calc(100vh - 64px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    background: #000;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-content {
+    text-align: center;
+}
+
+.service-content h2 {
+    font-size: 7vw;
+    letter-spacing: -0.05em;
+    font-weight: 600;
+    margin: 0;
+    text-transform: uppercase;
+    font-family: var(--accent-font);
+}
+
+.service-content img {
+    width: 50%;
+    margin-top: 100px;
+}
