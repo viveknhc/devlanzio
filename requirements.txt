@@ -1,0 +1,10 @@
+asgiref==3.9.1
+Django==5.2.4
+django-tinymce==4.1.0
+django-versatileimagefield==3.1
+django-webp-converter==0.3.0
+pillow==11.3.0
+psycopg2-binary==2.9.10
+python-decouple==3.8
+python-magic==0.4.27
+sqlparse==0.5.3
