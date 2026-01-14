@@ -46,9 +46,20 @@ def contact(request):
     return render(request, "web/contact.html", context)
 
 def works(request):
+    categories = ServiceCategory.objects.all()
+    selected_category = request.GET.get("category")
+
     works = Works.objects.all()
-    context = {"is_works": True,
-               "works":works}
+
+    if selected_category:
+        works = works.filter(category_id=selected_category)
+
+    context = {
+        "is_works": True,
+        "categories": categories,
+        "works": works,
+        "selected_category": selected_category,
+    }
     return render(request, "web/works.html", context)
 
 def workSingle(request,id):

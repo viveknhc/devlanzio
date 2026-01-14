@@ -19,20 +19,16 @@
                     </nav>
 
                     <div class="filter pt-5 d-flex justify-content-center align-items-center" style="gap: 10px;">
-
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Dropdown button
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </div>
-
-
+                        <form method="get" id="work-category-dropdown-form" style="display:inline;">
+                            <select name="category" id="work-category-dropdown" style="display:inline-block; width:auto;" onchange="this.form.submit()">
+                                <option value="">Industries</option>
+                                {% for category in categories %}
+                                <option value="{{ category.id }}" {% if category.id|stringformat:"s" == selected_category %}selected{% endif %}>
+                                    {{ category.category }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </form>
                     </div>
 
 

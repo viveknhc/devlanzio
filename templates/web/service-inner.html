@@ -37,24 +37,34 @@
                             <!-- Service Planning Images Start -->
                             <div class="service-planning-images">
                                 <!-- Planning Image 1 Start -->
+                                {% if service.icon %}
                                 <div class="service-planning-img-1">
                                     <figure class="image-anime reveal">
-                                        <img src="{{ service.icon.url }}" alt="">
+                                        <img src="{{ service.icon.url }}" alt="{{ service.title }}">
                                     </figure>
                                 </div>
+                                {% endif %}
                                 <!-- Planning Image 1 Start End -->
 
                                 <!-- Planning Image 2 Start -->
+                                {% if service.icon %}
                                 <div class="service-planning-img-2">
                                     <figure class="image-anime reveal">
-                                        <img src="{{ service.icon.url }}" alt="">
+                                        <img src="{{ service.icon.url }}" alt="{{ service.title }}">
                                     </figure>
                                 </div>
+                                {% endif %}
                                 <!-- Planning Image 2 End -->
 
                                 <!-- Service Planning Circle Start -->
                                 <div class="service-planning-circle">
-                                    <img src="{{ service.image.url }}" alt="">
+                                    {% if service.image %}
+                                    <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                    {% elif service.icon %}
+                                    <img src="{{ service.icon.url }}" alt="{{ service.title }}">
+                                    {% else %}
+                                    <img src="{% static 'images/page-about-img-1.jpg' %}" alt="{{ service.title }}">
+                                    {% endif %}
                                 </div>
                                 <!-- Service Planning Circle End -->
                             </div>
@@ -66,26 +76,49 @@
                             <div class="service-planning-content">
                                 <!-- Section Title Start -->
                                 <div class="section-title">
-                                    <h2 class="wow fadeInUp">{{ service.title }}</h2>
-                                    <p class="wow fadeInUp" data-wow-delay="0.2s">Planning in business refers to
-                                        creating detailed plans for operations, resource allocation, budgeting, and
-                                        setting specific, measurable goals. It helps businesses anticipate challenges,
-                                        organize activities, and ensure smooth execution of tasks.</p>
-                                    <p class="wow fadeInUp" data-wow-delay="0.4s">Strategy involves crafting a long-term
-                                        vision to gain a competitive edge. It includes market analysis, defining
-                                        competitive positioning, identifying core competencies, and making decisions on
-                                        how to allocate resources to achieve business objectives.</p>
+                                    <h2 class="wow fadeInUp">
+                                        {% if service.sub_title %}
+                                        {{ service.sub_title }}
+                                        {% else %}
+                                        Strategic planning tailored to your business
+                                        {% endif %}
+                                    </h2>
+
+                                    {% if service.short_description %}
+                                    <p class="wow fadeInUp" data-wow-delay="0.2s">
+                                        {{ service.short_description|safe }}
+                                    </p>
+                                    {% else %}
+                                    <p class="wow fadeInUp" data-wow-delay="0.2s">
+                                        Planning in business refers to creating detailed plans for operations,
+                                        resource allocation, budgeting, and setting specific, measurable goals.
+                                        It helps businesses anticipate challenges, organize activities, and
+                                        ensure smooth execution of tasks.
+                                    </p>
+                                    <p class="wow fadeInUp" data-wow-delay="0.4s">
+                                        Strategy involves crafting a long-term vision to gain a competitive edge.
+                                        It includes market analysis, defining competitive positioning,
+                                        identifying core competencies, and making decisions on how to allocate
+                                        resources to achieve business objectives.
+                                    </p>
+                                    {% endif %}
                                 </div>
                                 <!-- Section Title End -->
 
                                 <!-- Service Planning List Start -->
                                 <div class="service-planning-list wow fadeInUp" data-wow-delay="0.8s">
+                                    {% if service.planning_list %}
+                                    <ul>
+                                        {{ service.planning_list|safe }}
+                                    </ul>
+                                    {% else %}
                                     <ul>
                                         <li>Optimize resources effectively</li>
                                         <li>Study market trends</li>
                                         <li>Anticipate potential risks</li>
                                         <li>Track progress regularly</li>
                                     </ul>
+                                    {% endif %}
                                 </div>
                                 <!-- Service Planning List End -->
                             </div>
@@ -101,24 +134,27 @@
                     <div class="service-entry-details">
                         <!-- Service Entry Content Start -->
                         <div class="service-entry-content wow fadeInUp">
-                            <p>In business, Planning & Strategy involve setting clear goals, allocating resources
-                                efficiently, and creating a long-term roadmap to achieve success. Planning focuses on
-                                detailed, short-term actions, while strategy defines the broader, long-term vision.
-                                Together, they help businesses adapt to market changes, mitigate risks, and maintain a
-                                competitive advantage for sustainable growth.</p>
+                            {% if service.detail_description %}
+                            {{ service.detail_description|safe }}
+                            {% else %}
+                            <p>
+                                In business, Planning & Strategy involve setting clear goals, allocating resources
+                                efficiently, and creating a long-term roadmap to achieve success. Planning focuses
+                                on detailed, short-term actions, while strategy defines the broader, long-term
+                                vision. Together, they help businesses adapt to market changes, mitigate risks,
+                                and maintain a competitive advantage for sustainable growth.
+                            </p>
+                            {% endif %}
                         </div>
                         <!-- Service Entry Content End -->
 
                         <!-- Service Entry List Start -->
                         <div class="service-entry-list wow fadeInUp" data-wow-delay="0.2s">
-                            <ul>
-                                <li>Goals</li>
-                                <li>Resources</li>
-                                <li>Market</li>
-                                <li>Risks</li>
-                                <li>Flexibility</li>
-                                <li>Growth</li>
-                            </ul>
+                            {% if service.included_items %}
+                            {{ service.included_items|safe }}
+                            {% else %}
+
+                            {% endif %}
                         </div>
                         <!-- Service Entry List End -->
                     </div>
@@ -126,6 +162,9 @@
 
                     <!-- Service Entry Steps Start -->
                     <div class="service-entry-steps">
+                        {% if service.process_steps %}
+                        {{ service.process_steps|safe }}
+                        {% else %}
                         <div class="row">
                             <div class="col-lg-3 col-md-6">
                                 <!-- Service Entry Steps Item Start -->
@@ -216,17 +255,23 @@
                             </div>
                         </div>
                         <!-- Service Entry Steps Item End -->
+                        {% endif %}
                     </div>
                     <!-- Service Entry Steps End -->
 
                     <!-- Service Entry Images Start -->
+                    {% if service.image or service.icon %}
                     <div class="service-entry-images">
                         <div class="row">
                             <div class="col-lg-4 col-md-6">
                                 <!-- Service Entry Img Start -->
                                 <div class="service-entry-img">
                                     <figure class="image-anime reveal">
-                                        <img src="{{ service.icon.url }}" alt="">
+                                        {% if service.image %}
+                                        <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                        {% elif service.icon %}
+                                        <img src="{{ service.icon.url }}" alt="{{ service.title }}">
+                                        {% endif %}
                                     </figure>
                                 </div>
                                 <!-- Service Entry Img End -->
@@ -236,7 +281,11 @@
                                 <!-- Service Entry Img Start -->
                                 <div class="service-entry-img">
                                     <figure class="image-anime reveal">
-                                        <img src="{{ service.icon.url }}" alt="">
+                                        {% if service.image %}
+                                        <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                        {% elif service.icon %}
+                                        <img src="{{ service.icon.url }}" alt="{{ service.title }}">
+                                        {% endif %}
                                     </figure>
                                 </div>
                                 <!-- Service Entry Img End -->
@@ -246,28 +295,42 @@
                                 <!-- Service Entry Img Start -->
                                 <div class="service-entry-img">
                                     <figure class="image-anime reveal">
-                                        <img src="{{ service.icon.url }}" alt="">
+                                        {% if service.image %}
+                                        <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                        {% elif service.icon %}
+                                        <img src="{{ service.icon.url }}" alt="{{ service.title }}">
+                                        {% endif %}
                                     </figure>
                                 </div>
                                 <!-- Service Entry Img End -->
                             </div>
                         </div>
                     </div>
+                    {% endif %}
                     <!-- Service Entry Images End -->
 
+                    {% if service.process_description %}
+                    <p class="wow fadeInUp">
+                        {{ service.process_description|safe }}
+                    </p>
+                    {% else %}
                     <p class="wow fadeInUp">In business, Research involves conducting thorough market analysis to
                         understand customer needs and competitor strategies, identifying opportunities for growth.
                         Launch refers to the strategic introduction of new products or services, ensuring effective
                         marketing and distribution. Development focuses on refining offerings based on customer feedback
                         and market trends to foster innovation. Lastly, Planning entails creating detailed action plans
                         that align short-term actions with long-term business objectives.</p>
+                    {% endif %}
                 </div>
                 <!-- Service Entry End -->
 
-             
+
 
                 <!-- Service Conter Steps Start -->
                 <div class="service-conter-steps">
+                    {% if service.counter_steps %}
+                    {{ service.counter_steps|safe }}
+                    {% else %}
                     <div class="row">
                         <div class="col-md-4">
                             <!-- Service Conter Steps Item Start -->
@@ -329,6 +392,7 @@
                             <!-- Service Conter Steps Item End -->
                         </div>
                     </div>
+                    {% endif %}
                 </div>
                 <!-- Service Conter Steps End -->
             </div>
@@ -339,12 +403,12 @@
 
 <!-- Page Portfolio Start -->
 <div class="page-portfolio p-0">
-  
+
     <div class="container">
         <div class="section-title">
-                        <h3 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;"> Works</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay="0.25s" style="visibility: visible; animation-delay: 0.25s; animation-name: fadeInUp;">Our {{service.category.category}} Case Studies </h2>
-                    </div>
+            <h3 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;"> Works</h3>
+            <h2 class="wow fadeInUp" data-wow-delay="0.25s" style="visibility: visible; animation-delay: 0.25s; animation-name: fadeInUp;">Our {{service.category.category}} Case Studies </h2>
+        </div>
 
 
         <div class="row align-items-center">
@@ -405,183 +469,196 @@
 
 
 <div class="service-faq service-single-faq">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <!-- Section Title Start -->
-                    <div class="section-title">
-                        <h3 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">FAQ's</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay="0.25s" style="visibility: visible; animation-delay: 0.25s; animation-name: fadeInUp;">Frequently asked questions</h2>
-                    </div>
-                    <!-- Section Title End -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- Section Title Start -->
+                <div class="section-title">
+                    <h3 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">FAQ's</h3>
+                    <h2 class="wow fadeInUp" data-wow-delay="0.25s" style="visibility: visible; animation-delay: 0.25s; animation-name: fadeInUp;">Frequently asked questions</h2>
                 </div>
-            </div>
-
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <!-- FAQ Accordion Start -->
-                    <div class="page-faq-accordion" id="pagefaqaccordion">
-                        <!-- FAQ Item Start -->
-                        <div class="accordion-item wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <h2 class="accordion-header" id="page-heading1">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse1" aria-expanded="true" aria-controls="page-collapse1">
-                                    What is business planning?
-                                </button>
-                            </h2>
-                            <div id="page-collapse1" class="accordion-collapse collapse show" aria-labelledby="page-heading1" data-bs-parent="#pagefaqaccordion">
-                                <div class="accordion-body">
-                                    <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FAQ Item End -->
-
-                        <!-- FAQ Item Start -->
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                            <h2 class="accordion-header" id="page-heading2">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse2" aria-expanded="false" aria-controls="page-collapse2">
-                                    Why is strategy important for a business?
-                                </button>
-                            </h2>
-                            <div id="page-collapse2" class="accordion-collapse collapse" aria-labelledby="page-heading2" data-bs-parent="#pagefaqaccordion">
-                                <div class="accordion-body">
-                                    <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FAQ Item End -->
-
-                        <!-- FAQ Item Start -->
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                            <h2 class="accordion-header" id="page-heading3">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse3" aria-expanded="false" aria-controls="page-collapse3">
-                                    How do planning and strategy work together?
-                                </button>
-                            </h2>
-                            <div id="page-collapse3" class="accordion-collapse collapse" aria-labelledby="page-heading3" data-bs-parent="#pagefaqaccordion">
-                                <div class="accordion-body">
-                                    <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FAQ Item End -->    
-
-                        <!-- FAQ Item Start -->
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
-                            <h2 class="accordion-header" id="page-heading4">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse4" aria-expanded="false" aria-controls="page-collapse4">
-                                    How often should business revise planning and strategy?
-                                </button>
-                            </h2>
-                            <div id="page-collapse4" class="accordion-collapse collapse" aria-labelledby="page-heading4" data-bs-parent="#pagefaqaccordion">
-                                <div class="accordion-body">
-                                    <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FAQ Item End -->
-                    </div>
-                    <!-- FAQ Accordion End -->
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- FAQ Accordion Start -->
-                    <div class="page-faq-accordion" id="accordion2">
-                        <!-- FAQ Item Start -->
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                            <h2 class="accordion-header" id="page-heading5">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse5" aria-expanded="false" aria-controls="page-collapse5">
-                                    What tools can assist developing planning and strategy?
-                                </button>
-                            </h2>
-                            <div id="page-collapse5" class="accordion-collapse collapse" aria-labelledby="page-heading5" data-bs-parent="#accordion2">
-                                <div class="accordion-body">
-                                    <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FAQ Item End -->
-
-                        <!-- FAQ Item Start -->
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                            <h2 class="accordion-header" id="page-heading6">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse6" aria-expanded="false" aria-controls="page-collapse6">
-                                    What is the importance of planning in business?
-                                </button>
-                            </h2>
-                            <div id="page-collapse6" class="accordion-collapse collapse" aria-labelledby="page-heading6" data-bs-parent="#accordion2">
-                                <div class="accordion-body">
-                                    <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FAQ Item End -->
-
-                        <!-- FAQ Item Start -->
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
-                            <h2 class="accordion-header" id="page-heading7">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse7" aria-expanded="false" aria-controls="page-collapse7">
-                                    How does strategy differ from planning?
-                                </button>
-                            </h2>
-                            <div id="page-collapse7" class="accordion-collapse collapse" aria-labelledby="page-heading7" data-bs-parent="#accordion2">
-                                <div class="accordion-body">
-                                    <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FAQ Item End -->
-
-                        <!-- FAQ Item Start -->
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
-                            <h2 class="accordion-header" id="page-heading8">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse8" aria-expanded="false" aria-controls="page-collapse8">
-                                    What are the key components of a business strategy?
-                                </button>
-                            </h2>
-                            <div id="page-collapse8" class="accordion-collapse collapse" aria-labelledby="page-heading8" data-bs-parent="#accordion2">
-                                <div class="accordion-body">
-                                    <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FAQ Item End -->
-                        
-                        <!-- FAQ Item Start -->
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: fadeInUp;">
-                            <h2 class="accordion-header" id="page-heading9">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse9" aria-expanded="false" aria-controls="page-collapse9">
-                                    How often should revisit their planning and strategy?
-                                </button>
-                            </h2>
-                            <div id="page-collapse9" class="accordion-collapse collapse" aria-labelledby="page-heading9" data-bs-parent="#accordion2">
-                                <div class="accordion-body">
-                                    <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FAQ Item End -->
-
-                        <!-- FAQ Item Start -->
-                        <div class="accordion-item wow fadeInUp" data-wow-delay="1.2s" style="visibility: visible; animation-delay: 1.2s; animation-name: fadeInUp;">
-                            <h2 class="accordion-header" id="page-heading10">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse10" aria-expanded="false" aria-controls="page-collapse10">
-                                    What tools can help with planning and strategy?
-                                </button>
-                            </h2>
-                            <div id="page-collapse10" class="accordion-collapse collapse" aria-labelledby="page-heading10" data-bs-parent="#accordion2">
-                                <div class="accordion-body">
-                                    <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FAQ Item End -->
-                    </div>
-                    <!-- FAQ Accordion End -->
-                </div>
+                <!-- Section Title End -->
             </div>
         </div>
+
+        <div class="row align-items-center">
+            {% if service.faqs.all %}
+            <div class="col-lg-8">
+                <!-- FAQ Accordion Start -->
+                <div class="page-faq-accordion" id="pagefaqaccordion">
+                    {% for faq in service.faqs.all %}
+                    <div class="accordion-item wow fadeInUp" {% if not forloop.first %}data-wow-delay="0.2s" {% endif %}>
+                        <h2 class="accordion-header" id="faq-heading-{{ forloop.counter }}">
+                            <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-{{ forloop.counter }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="faq-collapse-{{ forloop.counter }}">
+                                {{ faq.question }}
+                            </button>
+                        </h2>
+                        <div id="faq-collapse-{{ forloop.counter }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="faq-heading-{{ forloop.counter }}" data-bs-parent="#pagefaqaccordion">
+                            <div class="accordion-body">
+                                <p>{{ faq.answer|safe }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq-heading-empty">
+                            <button class="accordion-button" type="button" disabled>
+                                FAQs for this service will be added soon.
+                            </button>
+                        </h2>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- FAQ Accordion End -->
+            </div>
+            {% else %}
+            <div class="col-lg-6">
+                <!-- FAQ Accordion Start -->
+                <div class="page-faq-accordion" id="pagefaqaccordion">
+                    <!-- Existing default FAQ content -->
+                    <div class="accordion-item wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                        <h2 class="accordion-header" id="page-heading1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse1" aria-expanded="true" aria-controls="page-collapse1">
+                                What is business planning?
+                            </button>
+                        </h2>
+                        <div id="page-collapse1" class="accordion-collapse collapse show" aria-labelledby="page-heading1" data-bs-parent="#pagefaqaccordion">
+                            <div class="accordion-body">
+                                <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <h2 class="accordion-header" id="page-heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse2" aria-expanded="false" aria-controls="page-collapse2">
+                                Why is strategy important for a business?
+                            </button>
+                        </h2>
+                        <div id="page-collapse2" class="accordion-collapse collapse" aria-labelledby="page-heading2" data-bs-parent="#pagefaqaccordion">
+                            <div class="accordion-body">
+                                <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <h2 class="accordion-header" id="page-heading3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse3" aria-expanded="false" aria-controls="page-collapse3">
+                                How do planning and strategy work together?
+                            </button>
+                        </h2>
+                        <div id="page-collapse3" class="accordion-collapse collapse" aria-labelledby="page-heading3" data-bs-parent="#pagefaqaccordion">
+                            <div class="accordion-body">
+                                <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                        <h2 class="accordion-header" id="page-heading4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse4" aria-expanded="false" aria-controls="page-collapse4">
+                                How often should business revise planning and strategy?
+                            </button>
+                        </h2>
+                        <div id="page-collapse4" class="accordion-collapse collapse" aria-labelledby="page-heading4" data-bs-parent="#pagefaqaccordion">
+                            <div class="accordion-body">
+                                <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ Accordion End -->
+            </div>
+
+            <div class="col-lg-6">
+                <!-- FAQ Accordion Start -->
+                <div class="page-faq-accordion" id="accordion2">
+                    <!-- Existing default FAQ content (right column) -->
+                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <h2 class="accordion-header" id="page-heading5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse5" aria-expanded="false" aria-controls="page-collapse5">
+                                What tools can assist developing planning and strategy?
+                            </button>
+                        </h2>
+                        <div id="page-collapse5" class="accordion-collapse collapse" aria-labelledby="page-heading5" data-bs-parent="#accordion2">
+                            <div class="accordion-body">
+                                <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <h2 class="accordion-header" id="page-heading6">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse6" aria-expanded="false" aria-controls="page-collapse6">
+                                What is the importance of planning in business?
+                            </button>
+                        </h2>
+                        <div id="page-collapse6" class="accordion-collapse collapse" aria-labelledby="page-heading6" data-bs-parent="#accordion2">
+                            <div class="accordion-body">
+                                <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                        <h2 class="accordion-header" id="page-heading7">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse7" aria-expanded="false" aria-controls="page-collapse7">
+                                How does strategy differ from planning?
+                            </button>
+                        </h2>
+                        <div id="page-collapse7" class="accordion-collapse collapse" aria-labelledby="page-heading7" data-bs-parent="#accordion2">
+                            <div class="accordion-body">
+                                <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
+                        <h2 class="accordion-header" id="page-heading8">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse8" aria-expanded="false" aria-controls="page-collapse8">
+                                What are the key components of a business strategy?
+                            </button>
+                        </h2>
+                        <div id="page-collapse8" class="accordion-collapse collapse" aria-labelledby="page-heading8" data-bs-parent="#accordion2">
+                            <div class="accordion-body">
+                                <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item wow fadeInUp" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: fadeInUp;">
+                        <h2 class="accordion-header" id="page-heading9">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse9" aria-expanded="false" aria-controls="page-collapse9">
+                                How often should revisit their planning and strategy?
+                            </button>
+                        </h2>
+                        <div id="page-collapse9" class="accordion-collapse collapse" aria-labelledby="page-heading9" data-bs-parent="#accordion2">
+                            <div class="accordion-body">
+                                <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item wow fadeInUp" data-wow-delay="1.2s" style="visibility: visible; animation-delay: 1.2s; animation-name: fadeInUp;">
+                        <h2 class="accordion-header" id="page-heading10">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#page-collapse10" aria-expanded="false" aria-controls="page-collapse10">
+                                What tools can help with planning and strategy?
+                            </button>
+                        </h2>
+                        <div id="page-collapse10" class="accordion-collapse collapse" aria-labelledby="page-heading10" data-bs-parent="#accordion2">
+                            <div class="accordion-body">
+                                <p>specializes in delivering innovative marketing, design, and branding solutions to help businesses stand out in their industries. Whether through advertising, graphic design, web development, or multimedia production, a creative agency focuses on building a strong brand presence for clients.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ Accordion End -->
+            </div>
+            {% endif %}
+        </div>
     </div>
+</div>
 
 
 
