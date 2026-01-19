@@ -46,19 +46,40 @@ def contact(request):
     return render(request, "web/contact.html", context)
 
 def works(request):
-    categories = ServiceCategory.objects.all()
+    categories = ServiceCategory.objects.prefetch_related('services').all()
     selected_category = request.GET.get("category")
+    selected_service = request.GET.get("service")
 
-    works = Works.objects.all()
+    # Base queryset
+    works_qs = Works.objects.all()
 
+    # Dropdown 1: Filter by category, updates category dropdown and populates services dropdown
+    # Dropdown 2: Filter by service under selected category (takes precedence)
+    if selected_service:
+        # If service is selected, filter works by that service
+        works = works_qs.filter(service_id=selected_service)
+    elif selected_category:
+        # If only category is selected, filter works by that category
+        works = works_qs.filter(category_id=selected_category)
+    else:
+        works = works_qs
+
+    # For dependent service dropdown: If a category is selected, show its related services
+    related_services = None
     if selected_category:
-        works = works.filter(category_id=selected_category)
+        try:
+            category_obj = ServiceCategory.objects.prefetch_related('services').get(id=selected_category)
+            related_services = category_obj.services.all()
+        except ServiceCategory.DoesNotExist:
+            related_services = None
 
     context = {
         "is_works": True,
         "categories": categories,
         "works": works,
         "selected_category": selected_category,
+        "selected_service": selected_service,
+        "related_services": related_services,
     }
     return render(request, "web/works.html", context)
 

@@ -13,21 +13,31 @@
 
                     <nav class="wow fadeInUp" data-wow-delay="0.25s">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index-2.html">home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Careers</li>
+                            <li class="breadcrumb-item"><a href="{% url 'web:index' %}">home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">works</li>
                         </ol>
                     </nav>
 
                     <div class="filter pt-5 d-flex justify-content-center align-items-center" style="gap: 10px;">
                         <form method="get" id="work-category-dropdown-form" style="display:inline;">
-                            <select name="category" id="work-category-dropdown" style="display:inline-block; width:auto;" onchange="this.form.submit()">
-                                <option value="">Industries</option>
+                            <select name="category" id="category-dropdown" style="display:inline-block; width:auto; margin-right: 10px;" onchange="this.form.submit()">
+                                <option value="">All Categories</option>
                                 {% for category in categories %}
                                 <option value="{{ category.id }}" {% if category.id|stringformat:"s" == selected_category %}selected{% endif %}>
                                     {{ category.category }}
                                 </option>
                                 {% endfor %}
                             </select>
+                            {% if related_services %}
+                            <select name="service" id="category-dropdown" style="display:inline-block; width:auto;" onchange="this.form.submit()">
+                                <option value="">All Services</option>
+                                {% for service in related_services %}
+                                <option value="{{ service.id }}" {% if service.id|stringformat:"s" == selected_service %}selected{% endif %}>
+                                    {{ service.title }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                            {% endif %}
                         </form>
                     </div>
 
@@ -56,7 +66,7 @@
                     <div class="work-item-image">
                         <a href="{% url 'web:work-single' work.id%}" data-cursor-text="View">
                             <figure class="image-anime reveal">
-                                <img src="{{ work.image.url }}" alt="">
+                                <img src="{{ work.icon.url }}" alt="">
                             </figure>
                         </a>
 
@@ -79,7 +89,7 @@
                         <!-- Work Item Tags Start -->
                         <div class="work-item-tags">
                             <ul>
-                                <li>{{ work.category }}</li>
+                                <li>{{ work.service.title }}</li>
                             </ul>
                         </div>
                         <!-- Work Item Tags End -->

@@ -24,60 +24,61 @@ class Service(models.Model):
         related_name="services"   # 👈 important
     )
     title = models.CharField(max_length=100)
-    description = HTMLField()
-    icon = VersatileImageField(upload_to="service/icons", blank=True, null=True)
-    image = VersatileImageField(
+    sub_title = models.CharField(max_length=100, blank=True, null=True, help_text="Sub title for the service Inner page")
+    sub_description = HTMLField(blank=True, null=True, help_text="Sub description for the service Inner page")
+
+    description1 = HTMLField(blank=True, null=True, help_text="Description 1 for the service Inner page")
+    description2 = HTMLField(blank=True, null=True, help_text="Description 2 for the service Inner page")
+    icon = VersatileImageField(upload_to="service/icons", blank=True, null=True, help_text="gif image for listing page).")
+    main_image_first = VersatileImageField(
         upload_to="service/images",
         blank=True,
         null=True,
         help_text="Main image used on the service inner page (circle and gallery).",
     )
-
-    # Optional content fields for service detail page (inner page)
-    sub_title = models.CharField(
-        max_length=200,
+    main_image_second = VersatileImageField(
+        upload_to="service/images",
         blank=True,
         null=True,
-        help_text="Subtitle shown near the top of the service inner page.",
+        help_text="Main image used on the service inner page (circle and gallery).",
     )
-    short_description = HTMLField(
-        blank=True,
-        null=True,
-        help_text="Short rich-text description shown under the subtitle.",
-    )
-    detail_description = HTMLField(
-        blank=True,
-        null=True,
-        help_text="Main detailed description text of the service.",
-    )
-    included_items = HTMLField(
-        blank=True,
-        null=True,
-        help_text="HTML list or content for the 'Includes this service' section.",
-    )
-    planning_list = HTMLField(
-        blank=True,
-        null=True,
-        help_text="Optional <li> elements for the planning bullet list.",
-    )
-    process_steps = HTMLField(
-        blank=True,
-        null=True,
-        help_text="Optional HTML to replace the 4-step 'Our process' cards.",
-    )
-    process_description = HTMLField(
-        blank=True,
-        null=True,
-        help_text="Optional paragraph shown below the process images.",
-    )
-    counter_steps = HTMLField(
-        blank=True,
-        null=True,
-        help_text="Optional HTML to replace the 3 bottom counter-step cards.",
-    )
-
     def __str__(self):
         return self.title
+
+class ServicePlaningStep(models.Model):
+    service = models.ForeignKey(
+        Service,
+        on_delete=models.CASCADE,
+        related_name="planning_steps",
+    )
+    planing_title = models.CharField(max_length=100)
+    planing_description = HTMLField()
+
+    def __str__(self):
+        return self.service.title
+
+
+class ServiceProcessStep(models.Model):
+    service = models.ForeignKey(
+        Service,
+        on_delete=models.CASCADE,
+        related_name="process_steps",
+    )
+    process_list = HTMLField()
+
+    def __str__(self):
+        return self.service.title
+
+class ServicePageImage(models.Model):
+    service = models.ForeignKey(
+        Service,
+        on_delete=models.CASCADE,
+        related_name="page_images",
+    )
+    image = VersatileImageField(upload_to="service/images")
+    def __str__(self):
+        return self.service.title
+
 
 
 class ServiceFAQ(models.Model):
@@ -88,10 +89,6 @@ class ServiceFAQ(models.Model):
     )
     question = models.CharField(max_length=255)
     answer = HTMLField()
-    order = models.PositiveIntegerField(default=1)
-
-    class Meta:
-        ordering = ["order"]
 
     def __str__(self):
         return f"{self.service.title} - {self.question}"
@@ -103,14 +100,32 @@ class Works(models.Model):
         on_delete=models.CASCADE,
         related_name="works"   # 👈 important
     )
-    image = VersatileImageField(upload_to = "works")
+    service = models.ForeignKey(
+        Service,
+        on_delete=models.CASCADE,
+        related_name="works"   # 👈 important
+    )
+    icon = VersatileImageField(upload_to = "works",help_text="image for listing card")
+
+    inner_page_main_image = VersatileImageField(upload_to = "works",help_text="image for Inner page Main Image")
     title = models.CharField(max_length=100)
     client = models.CharField(max_length=100)
     date = models.DateField()
-    link = models.URLField(blank=True, null=True)
+    # link = models.URLField(blank=True, null=True)
     description = HTMLField()
+
     def __str__(self):
         return self.title
+
+class WorksRelatedImages(models.Model):
+    service = models.ForeignKey(
+        Works,
+        on_delete=models.CASCADE,
+        related_name="workImage",
+    )
+    work_related_images = VersatileImageField(upload_to = "works",help_text="Add on images for work")
+
+
     
 class Testimonial(models.Model):
     name = models.CharField(max_length=100)

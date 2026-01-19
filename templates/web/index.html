@@ -21,7 +21,7 @@
 
                     <div class="section-title">
                         <h1 class="wow fadeInUp">{{ text.title }}</h1>
-                        <p class="wow fadeInUp" data-wow-delay="0.25s">We are a team of digital innovators, creative thinkers, and growth strategists dedicated to crafting powerful online experiences. From sleek websites to impactful marketing and unforgettable branding, we turn ideas into measurable success. With every project, we blend creativity and strategy to elevate your brand and help it thrive in the digital world.</p>
+                        <p class="wow fadeInUp" data-wow-delay="0.25s">{{ text.description }}</p>
                     </div>
 
                     <!-- Section Title End -->
@@ -47,59 +47,8 @@
 </div>
 <!-- Hero Section End -->
 
-<!-- Our Services Section Start -->
-<div class="our-services">
-    <div class="container">
-        <div class="row section-row align-items-center">
-            <div class="col-lg-6">
-                <!-- Section Title Start -->
-                <div class="section-title">
-                    <h3 class="wow fadeInUp">our services</h3>
-                    <h2 class="wow fadeInUp" data-wow-delay="0.25s">The digital solution you need</h2>
-                </div>
-                <!-- Section Title End -->
-            </div>
 
-            <div class="col-lg-6">
-                <!-- Section Btn Start -->
-                <div class="section-btn wow fadeInUp" data-wow-delay="0.5s">
-                    <a href="{% url 'web:services' %}" class="btn-default">view all services</a>
-                </div>
-                <!-- Section Btn End -->
-            </div>
-        </div>
 
-        <div class="row">
-            {% for service in services %}
-            <div class="col-lg-3 col-md-6">
-                <!-- Service Item Start -->
-                <div class="service-item page-service-item wow fadeInUp" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
-                    <div class="icon-box">
-                        <img src="{{ service.icon.url }}" alt="">
-                    </div>
-
-                    <div class="service-category">
-                        <a href="#">{{ service.title }}</a>
-                    </div>
-
-                    <div class="service-body">
-                        <div class="service-content">
-                            <h3>{{ service.category }}</h3>
-                            <p>{{ service.description }}</p>
-                        </div>
-                        <div class="service-btn">
-                            <a href="{% url 'web:service-single' service.id%}" class="readmore-btn">read more</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Service Item End -->
-            </div>
-            {% endfor %}
-
-        </div>
-    </div>
-</div>
-<!-- Our Services Section End -->
 
 
 
@@ -176,15 +125,6 @@
     </div>
 </div>
 
-<!-- <section class="text-olny-section">
-        <video src="{% static 'images/globe2.mp4' %}" autoplay muted loop id="myVideo"></video>
-        <div>
-            <h2 class="text-reveal">Lorem ipsum dolor sit amet consectetur ellat ducimus rerum neque laborum quo aliquam
-                l expedita sunt earum?
-            </h2>
-        </div>
-    </section> -->
-
 
 
 <section class="clients">
@@ -203,7 +143,7 @@
 
 
         <div class="content-box">
-            <div class="row">
+            <div class="row g-3">
                 {% for client in clients %}
                 <div class="col-lg-2">
                     <div class="img-box">
@@ -254,7 +194,7 @@
                     <div class="work-item-image">
                         <a href="{% url 'web:work-single' last_1_work.id %}" data-cursor-text="View">
                             <figure class="image-anime reveal">
-                                <img src="{{ last_1_work.image.url }}" alt="">
+                                <img src="{{ last_1_work.icon.url }}" alt="">
                             </figure>
                         </a>
 
@@ -303,7 +243,7 @@
                     <div class="work-item-image">
                         <a href="{% url 'web:work-single' last_2_work.id %}" data-cursor-text="View">
                             <figure class="image-anime reveal">
-                                <img src="{{ last_2_work.image.url }}" alt="">
+                                <img src="{{ last_2_work.icon.url }}" alt="">
                             </figure>
                         </a>
 
@@ -351,7 +291,7 @@
                     <div class="work-item-image">
                         <a href="{% url 'web:work-single' last_3_work.id %}" data-cursor-text="View">
                             <figure class="image-anime reveal">
-                                <img src="{{ last_3_work.image.url }}" alt="">
+                                <img src="{{ last_3_work.icon.url }}" alt="">
                             </figure>
                         </a>
 
@@ -399,7 +339,7 @@
                     <div class="work-item-image">
                         <a href="{% url 'web:work-single' last_4_work.id %}" data-cursor-text="View">
                             <figure class="image-anime reveal">
-                                <img src="{{ last_4_work.image.url }}" alt="">
+                                <img src="{{ last_4_work.icon.url }}" alt="">
                             </figure>
                         </a>
 
